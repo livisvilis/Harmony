@@ -5,6 +5,26 @@ using UnityEngine;
 public class Paka : MonoBehaviour
 {
     private Transform rot;
+    [SerializeField] GameObject go;
+    void Start()
+    {
+        rot = GetComponent<Transform>();
+    }
+    void Update()
+    {
+        if (rot.rotation.z > 0 )
+        {
+            go.SendMessage("SetShouldMove", false);
+            
+        }
+        if (rot.rotation.z < 0)
+        {
+            go.SendMessage("SetShouldMove", true);
+        }
+
+    }
+    /*
+    private Transform rot;
     [SerializeField] private GameObject go;
     [SerializeField] Vector2 dir;
     [SerializeField] float dur;
@@ -37,4 +57,5 @@ public class Paka : MonoBehaviour
         body.velocity = new Vector2(0, 0);
         yield break;
     }
+    */
 }
