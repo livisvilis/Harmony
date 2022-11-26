@@ -5,6 +5,8 @@ using UnityEngine;
 public class JangMovement : MonoBehaviour
 {
     [SerializeField] Transform groundCheckCollider;
+    Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +20,12 @@ public class JangMovement : MonoBehaviour
     [SerializeField] bool isGrounded = false;
     const float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
+    bool isWalking;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,7 +33,7 @@ public class JangMovement : MonoBehaviour
     {
         isOnGrownd();
         movement();
-        
+        animUbdate();
 
         
 
@@ -38,17 +42,23 @@ public class JangMovement : MonoBehaviour
     void movement()
     {
         //right and left
-        body.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, body.velocity.y); 
+        body.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, body.velocity.y);
 
         //changing sides
         if (body.velocity.x > 0.5)
         {
             transform.localScale = new Vector3(0.4415086f, 0.4415086f, 1f);
+            isWalking = true;
         }
         else if (body.velocity.x < -0.5)
         {
             transform.localScale = new Vector3(-0.4415086f, 0.4415086f, 1f);
+            isWalking = true;
         }
+        else {
+            isWalking = false;
+        }
+        
 
         //jumping
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
@@ -70,5 +80,12 @@ public class JangMovement : MonoBehaviour
             isGrounded = true;
         }
 
+    }
+
+    void animUbdate()
+    {
+        anim.SetFloat("yVelocity", body.velocity.y);
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetBool("isWalking", isWalking);
     }
 }
