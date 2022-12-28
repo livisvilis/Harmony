@@ -20,6 +20,7 @@ public class ScoreWhite : MonoBehaviour
         if (ZetonBila.tag == "ZetonBila")
         {
             ScoreNum++;
+            FindObjectOfType<AudioManager>().Play("diamond");
             Destroy(ZetonBila.gameObject);
             WhiteScoreText.text = ScoreNum + " x";
         }

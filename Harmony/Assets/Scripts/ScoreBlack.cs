@@ -20,6 +20,7 @@ public class ScoreBlack : MonoBehaviour
         if (ZetonCerna.tag == "ZetonCerna")
         {
             ScoreNum++;
+            FindObjectOfType<AudioManager>().Play("diamond");
             Destroy(ZetonCerna.gameObject);
             BlackScoreText.text = ScoreNum + " x";
         }

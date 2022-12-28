@@ -15,11 +15,13 @@ public class Paka : MonoBehaviour
         if (rot.rotation.z > 0 )
         {
             go.SendMessage("SetShouldMove", false);
-            
+            //FindObjectOfType<AudioManager>().Play("button");
+
         }
         if (rot.rotation.z < 0)
         {
             go.SendMessage("SetShouldMove", true);
+            //FindObjectOfType<AudioManager>().Play("button");
         }
 
     }

@@ -60,7 +60,7 @@ public class jinMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
         {
             Vector2 jump = new Vector2(Input.GetAxis("HorizontalP2"), jumpHeight);
-
+            FindObjectOfType<AudioManager>().Play("jump");
             body.AddForce(jump);
         }
     }

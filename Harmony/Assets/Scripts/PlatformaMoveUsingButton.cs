@@ -7,10 +7,17 @@ public class PlatformaMoveUsingButton : MonoBehaviour
     [SerializeField] Transform endPos, startPos;
     bool checkG;
     bool shouldMove;
-
+    bool isRunning;
     IEnumerator movePlatform(Vector3 target, float speed, bool check)
     {
+        
+        if(isRunning == true)
+        {
+            yield break;
+        }
+        isRunning = true;
         Vector3 startPos = transform.position;
+        //FindObjectOfType<AudioManager>().Play("platform");
         float time = 0f;
 
         while (transform.position != target && check == checkG)
@@ -19,6 +26,8 @@ public class PlatformaMoveUsingButton : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+        //FindObjectOfType<AudioManager>().StopPlaying("platform");
+        isRunning = false;
     }
 
     void Update()

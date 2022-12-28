@@ -64,7 +64,7 @@ public class JangMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
             Vector2 jump = new Vector2(Input.GetAxis("Horizontal"), jumpHeight);
-
+            FindObjectOfType<AudioManager>().Play("jump");
             body.AddForce(jump);
         }
     }
