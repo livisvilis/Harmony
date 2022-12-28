@@ -6,24 +6,56 @@ public class Paka : MonoBehaviour
 {
     private Transform rot;
     [SerializeField] GameObject go;
+    private float previousRot;
+    private bool previous;
+    private bool actual;
+    private bool colision;
     void Start()
     {
         rot = GetComponent<Transform>();
+        previousRot = rot.rotation.z;
+        if (previousRot > 0)
+        {
+            previous = false;
+        }
+        else
+        {
+            previous = true;
+        }
     }
     void Update()
     {
+        
         if (rot.rotation.z > 0 )
         {
             go.SendMessage("SetShouldMove", false);
-            //FindObjectOfType<AudioManager>().Play("button");
+            actual = false;
 
         }
         if (rot.rotation.z < 0)
         {
             go.SendMessage("SetShouldMove", true);
-            //FindObjectOfType<AudioManager>().Play("button");
+            actual = true;
         }
 
+        if (actual != previous)
+        {
+            FindObjectOfType<AudioManager>().Play("button");
+        }
+
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        previousRot = rot.rotation.z;
+        if (previousRot > 0)
+        {
+            previous = false;
+        }
+        else
+        {
+            previous = true;
+        }
+        
     }
     /*
     private Transform rot;

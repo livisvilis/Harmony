@@ -17,12 +17,14 @@ public class tlacitko : MonoBehaviour
     {
         go.SendMessage("SetShouldMove", true);
         anim.SetBool("isPressed", true);
+        //FindObjectOfType<AudioManager>().Play("button");
         FindObjectOfType<AudioManager>().Play("button");
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         go.SendMessage("SetShouldMove", false);
         anim.SetBool("isPressed", false);
+        //FindObjectOfType<AudioManager>().Play("button");
         FindObjectOfType<AudioManager>().Play("button");
     }
 

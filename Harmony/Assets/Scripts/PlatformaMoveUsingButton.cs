@@ -8,26 +8,36 @@ public class PlatformaMoveUsingButton : MonoBehaviour
     bool checkG;
     bool shouldMove;
     bool isRunning;
+    bool moving;
+    AudioSource sound;
+    public void Start()
+    {
+        FindObjectOfType<AudioManager>().Play("platform");
+        sound = gameObject.GetComponent<AudioSource>();
+    }
     IEnumerator movePlatform(Vector3 target, float speed, bool check)
     {
-        
+        /*
         if(isRunning == true)
         {
-            yield break;
+            yield  break;
         }
-        isRunning = true;
+        isRunning = true;*/
         Vector3 startPos = transform.position;
-        //FindObjectOfType<AudioManager>().Play("platform");
+        
         float time = 0f;
+
 
         while (transform.position != target && check == checkG)
         {
             transform.position = Vector3.Lerp(startPos, target, (time / Vector3.Distance(startPos, target)) * speed);
             time += Time.deltaTime;
             yield return null;
+            moving = true;
         }
+        moving = false;
         //FindObjectOfType<AudioManager>().StopPlaying("platform");
-        isRunning = false;
+        //isRunning = false;
     }
 
     void Update()
@@ -43,11 +53,19 @@ public class PlatformaMoveUsingButton : MonoBehaviour
             StartCoroutine(movePlatform(startPos.position, 2f, false));
         }
 
+        if (moving == true)
+        {
+            sound.volume = 1f;
+        }
+        else
+        {
+            sound.volume = 0f;
+        }
     }
 
     public void SetShouldMove(bool sm) 
     {
         shouldMove = sm;
-        Debug.Log(sm);
+        
     }
 }
