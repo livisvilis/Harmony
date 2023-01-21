@@ -54,6 +54,7 @@ public class DoorEnd : MonoBehaviour
     public IEnumerator EndLevel()
     {
         logo.SetActive(true);
+        FindObjectOfType<AudioManager>().Play("end");
         yield return new WaitForSeconds(2.5f);
         endLevel.enabled = true;
         TimeSpan time = TimeSpan.FromSeconds(t.currentTime);
