@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     public TMPro.TextMeshProUGUI currentTimeText;
     string minutes;
     string seconds;
+    public PauseMenu pauseMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stopwatchActive == true)
+        if (stopwatchActive == true && pauseMenu.isPaused == false)
         {
             currentTime = currentTime + Time.deltaTime;
         }
