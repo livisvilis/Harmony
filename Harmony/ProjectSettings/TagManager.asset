@@ -10,6 +10,7 @@ TagManager:
   - WaterBlack
   - jin
   - jang
+  - Sound
   layers:
   - Default
   - TransparentFX

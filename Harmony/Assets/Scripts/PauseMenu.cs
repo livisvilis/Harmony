@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu = GameObject.Find("CanvasPause").GetComponent<Canvas>();
         jin = GameObject.FindGameObjectWithTag("jin");
         jang = GameObject.FindGameObjectWithTag("jang");
-        sound = gameObject.GetComponent<AudioSource>();
+        sound = GameObject.Find("backgroundMusic").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
