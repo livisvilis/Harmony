@@ -4149,7 +4149,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -6036,7 +6036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1284626700704059450, guid: bba3e119f3aa4434a9056d230ae36eba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -293.65
+      value: -292.65
       objectReference: {fileID: 0}
     - target: {fileID: 4171258202784116930, guid: bba3e119f3aa4434a9056d230ae36eba, type: 3}
       propertyPath: m_LocalScale.x
@@ -6124,7 +6124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171258203227094821, guid: bba3e119f3aa4434a9056d230ae36eba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -293.5
+      value: -292.5
       objectReference: {fileID: 0}
     - target: {fileID: 4171258203227094821, guid: bba3e119f3aa4434a9056d230ae36eba, type: 3}
       propertyPath: m_LocalRotation.w
